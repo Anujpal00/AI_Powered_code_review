@@ -1,0 +1,128 @@
+pipeline {
+    agent any
+
+    environment {
+        ECR_REPO_URL = "529088255515.dkr.ecr.us-east-1.amazonaws.com/retailmax-cloudmigration-platform"
+        AWS_REGION = "us-east-1"
+    }
+
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Anujpal00/RetailMax-CloudMigration-Platform.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def dockerImage = docker.build("${ECR_REPO_URL}:latest")
+                    // Save image reference
+                    env.IMAGE_ID = dockerImage.id
+                }
+
+
+
+
+
+==============================================================
+
+
+Python code
+
+def divide(a, b):
+    return a / b   # No ZeroDivisionError handling
+
+print("Result:", divide(10, 0))
+
+for i in range(5):
+    print(i)
+    i += 2   # Unnecessary modification inside for loop
+
+
+=============================================================
+javascript
+
+// Buggy JavaScript code
+function login(user, pass) {
+    if (user == "admin" && pass == "12345") { // Hardcoded password (security issue)
+        console.log("Login successful");
+    } else {
+        console.log("Login failed");
+    }
+}
+
+let nums = [1, 2, 3];
+for (let i = 0; i <= nums.length; i++) { // Off-by-one error
+    console.log(nums[i]);
+}
+
+---------------------------------------------------------------------------------------------------
+java
+
+// Buggy Java code
+public class Test {
+    public static void main(String[] args) {
+        String str = null;
+        System.out.println(str.length()); // NullPointerException
+
+        for (int i = 0; i <= 5; i++) { // Off-by-one loop
+            System.out.println(i);
+        }
+    }
+}
+======================================================================================
+c
+// Buggy C code
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char *ptr;
+    strcpy(ptr, "Hello"); // Writing to uninitialized pointer
+
+    int arr[3] = {1, 2, 3};
+    for (int i = 0; i <= 3; i++) { // Array index out of bounds
+        printf("%d\n", arr[i]);
+    }
+    return 0;
+}
+===============================================================================
+c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* arr = new int[5]; // Memory allocated
+    for (int i = 0; i <= 5; i++) { // Off-by-one
+        arr[i] = i;
+    }
+    cout << arr[10]; // Accessing out of bounds
+    // No delete[] -> Memory leak
+    return 0;
+}
+==============================================================
+Rust
+
+fn main() {
+    let v = vec![1, 2, 3];
+    println!("{}", v[5]); // Panic: index out of bounds
+
+    let mut s = String::from("hello");
+    let r1 = &s;
+    let r2 = &mut s; // Borrow checker violation
+    println!("{}, {}", r1, r2);
+}
+=============================================================
+go---
+
+package main
+import "fmt"
+
+func main() {
+    var p *int
+    fmt.Println(*p) // Nil pointer dereference
+
+    nums := []int{1, 2, 3}
+    fmt.Println(nums[5]) // Slice out of range
+}
