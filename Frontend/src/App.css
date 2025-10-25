@@ -379,3 +379,138 @@ main .right{
   margin: 10px 0;
 }
 
+/* Roadmap Form */
+.roadmap-form {
+  padding: 1rem;
+  background: black;
+  height: 100%;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  color: white;
+}
+
+.roadmap-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.roadmap-form select,
+.roadmap-form input {
+  background: rgb(27, 27, 27);
+  color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.roadmap-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.roadmap-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Roadmap Display */
+.roadmap-display {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  background: rgb(55, 54, 54);
+  border-radius: 0.7rem;
+  color: white;
+}
+
+.roadmap-display h2 {
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+.day {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.day h3 {
+  margin-bottom: 0.5rem;
+  color: #8B5CF6;
+}
+
+.day p {
+  margin: 0.5rem 0;
+}
+
+.day ul {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+
+.day li {
+  margin-bottom: 0.25rem;
+}
+
+/* Progress Dashboard */
+.progress-dashboard {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  background: rgb(55, 54, 54);
+  border-radius: 0.7rem;
+  color: white;
+}
+
+.progress-dashboard h2 {
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #8B5CF6);
+  transition: width 0.3s ease;
+}
+
+.completed-days-list {
+  margin-top: 1rem;
+}
+
+.completed-days-list h3 {
+  margin-bottom: 0.5rem;
+  color: #10b981;
+}
+
+.completed-days-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.completed-days-list li {
+  padding: 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #10b981;
+}
+
