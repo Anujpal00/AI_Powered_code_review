@@ -1,17 +1,16 @@
-# TODO: Add Code Generation Chatbot Feature
+# TODO: Implement Mark as Completed and Progress Dashboard for Roadmap
 
 ## Backend Updates
-- [x] Update `Backend/src/models/user.model.js`: Add `type`, `query`, `language`, `generatedCode`, `explanation` to `historySchema` for flexible history storage (supports both review and codegen).
-- [x] Add `generateCode` function in `Backend/src/controllers/ai.controller.js`: Handle POST input (problem, language), build Gemini prompt for code + explanation, parse JSON response.
-- [x] Add new route in `Backend/src/routes/ai.route.js`: POST `/generate-code` with auth middleware.
-- [x] Update `Backend/src/controllers/history.controller.js`: Modify `addHistory` to store codegen entries (type: 'codegen', query, language, generatedCode, explanation).
+- [x] Update `Backend/src/models/user.model.js`: Add roadmap field to user schema with days array including completion status.
+- [x] Add endpoints in `Backend/src/controllers/ai.controller.js`: `markDayComplete` to update completion status, `getRoadmapProgress` to fetch user's roadmap progress.
+- [x] Update `Backend/src/routes/ai.route.js`: Add routes for `/mark-day-complete` and `/get-roadmap-progress` with auth middleware.
 
 ## Frontend Updates
-- [x] Update `Frontend/src/App.jsx`: Add states for tab switching, chat messages, problem input, language select. Implement tab UI, codegen form, generateCode API call, chat display with syntax highlighting and copy button. Integrate codegen history filtering/display.
-- [x] Update `Frontend/src/App.css`: Add CSS for tabs, chat interface, message bubbles, code blocks, copy button.
+- [x] Update `Frontend/src/App.jsx`: Add state for roadmap progress, API calls for marking day complete and fetching progress, add new "Progress Dashboard" tab, modify roadmap display to show only days up to the next incomplete day (progressive reveal).
+- [x] Update `Frontend/src/App.css`: Add CSS for progress dashboard (e.g., progress bar, completed days list).
 
 ## Followup Steps
-- [x] Install missing dependencies if needed (e.g., `react-syntax-highlighter` in Frontend/).
-- [x] Test backend: Run server, test new endpoint with Postman, verify MongoDB storage.
-- [x] Test frontend: Run dev server, login, test codegen tab, chat, history, copy functionality.
-- [x] Handle edge cases: Invalid inputs, API errors, language support (any language via Gemini).
+- [x] Install any missing dependencies if needed.
+- [x] Test backend endpoints with Postman.
+- [x] Test frontend: Run dev server, generate roadmap, mark days complete, view progress dashboard with progressive reveal.
+- [x] Handle edge cases: Invalid day indices, unauthorized access, no roadmap generated yet.
