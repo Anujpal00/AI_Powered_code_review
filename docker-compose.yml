@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: smart_code_review_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - app_network
+
+  backend:
+    build: ./Backend
+    container_name: code_review_backend
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://admin:password@mongodb:27017/smart_code_review?authSource=admin
+      NODE_ENV: production
+    networks:
+      - app_network
+
+  frontend:
+    build: ./Frontend
+    container_name: code_review_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+volumes:
+  mongo_data:
+
+networks:
+  app_network:
+    driver: bridge

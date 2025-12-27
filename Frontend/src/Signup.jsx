@@ -25,33 +25,33 @@ export default function Signup({ onSignup, onToggleLogin }) {
   return (
     <div className="signup-container">
       <h2>Sign Up Form</h2>
-      <div className="glass-form">
+      <div className="terminal-form">
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            className="glass-input"
-            placeholder="Username" 
-            value={username} 
-            onChange={e => setUsername(e.target.value)} 
-            required 
+          <input
+            type="text"
+            className="terminal-input"
+            placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            required
           />
-          <input 
-            type="email" 
-            className="glass-input"
-            placeholder="Email" 
-            value={email} 
-            onChange={e => setEmail(e.target.value)} 
-            required 
+          <input
+            type="email"
+            className="terminal-input"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
           />
-          <input 
-            type="password" 
-            className="glass-input"
-            placeholder="Password (min 8 chars)" 
-            value={password} 
-            onChange={e => setPassword(e.target.value)} 
-            required 
+          <input
+            type="password"
+            className="terminal-input"
+            placeholder="Password (min 8 chars)"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
           />
-          <button type="submit" className="purple-btn">Sign Up</button>
+          <button type="submit" className="terminal-btn">Sign Up</button>
         </form>
         {error && <div className="error">{error}</div>}
         {success && <div className="success">{success}</div>}
