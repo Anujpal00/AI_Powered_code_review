@@ -32,33 +32,33 @@ export default function Login({ onLogin, onToggleSignup }) {
   return (
     <div className="login-container">
       <h2>Login Form</h2>
-      <div className="glass-form">
+      <div className="terminal-form">
         <form onSubmit={handleSubmit}>
-          <input 
-            type="email" 
-            className="glass-input"
-            placeholder="Username or Email" 
-            value={email} 
-            onChange={e => setEmail(e.target.value)} 
-            required 
+          <input
+            type="email"
+            className="terminal-input"
+            placeholder="Username or Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
           />
-          <input 
-            type="password" 
-            className="glass-input"
-            placeholder="Password" 
-            value={password} 
-            onChange={e => setPassword(e.target.value)} 
-            required 
+          <input
+            type="password"
+            className="terminal-input"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
           />
           <label className="remember-me">
-            <input 
-              type="checkbox" 
-              checked={rememberMe} 
-              onChange={e => setRememberMe(e.target.checked)} 
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={e => setRememberMe(e.target.checked)}
             />
             Remember me
           </label>
-          <button type="submit" className="purple-btn">Login</button>
+          <button type="submit" className="terminal-btn">Login</button>
         </form>
         <a href="#" className="forgot-link" onClick={handleForgot}>Forgot Password?</a>
         {error && <div className="error">{error}</div>}

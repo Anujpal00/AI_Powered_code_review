@@ -9,62 +9,50 @@ module.exports.getReview = async (req,res)=>{
         return res.status(400).send("Prompt is required")
     }
 
-    const prompt = `You are an expert code reviewer with deep knowledge of software development, best practices, and optimization techniques. 
-        Your goal is to analyze the given code, identify issues, and suggest the best solutions while maintaining clarity and efficiency.
+const prompt = `
+You are a senior software engineer and professional code reviewer.
 
-        🎯 **Code Review Process:**  
-        1️⃣ Identify problems in the code.  
-        2️⃣ Explain **what is wrong** and why.  
-        3️⃣ Suggest a **solution** to fix the issues.  
-        4️⃣ Provide a **Correct Code** implementation.  
-        5️⃣ Finally, suggest an **Optimized Code** version.  
+Your task is to review the given code and provide a clear, professional, and easy-to-read review.
 
-        📌 **Key Areas to Review:**  
-        - Readability & Structure: Ensure clean, modular, and well-formatted code.  
-        - Performance & Optimization: Identify redundant operations and inefficient loops.  
-        - Security & Error Handling: Prevent vulnerabilities like SQL Injection & XSS.  
-        - Maintainability & Scalability: Ensure the code can grow efficiently.  
+STRICT RULES (MANDATORY):
+- Do NOT use tables.
+- Do NOT compress multiple issues into a single paragraph.
+- Each issue MUST be listed separately and clearly.
+- Each issue MUST follow the exact format below.
+- Use short, professional language.
+- Corrected code must be simple, readable, and beginner-friendly.
+- Do NOT over-optimize or add unnecessary complexity.
 
-        🛑 **Bad Code Example:**  
-        \`\`\`python
-        def process(data):
-            result = []
-            for i in range(len(data)):
-                result.append(data[i] * 2)
-            return result
-        \`\`\`  
+-----------------------------------
+FORMAT TO FOLLOW EXACTLY
+-----------------------------------
 
-        ❌ **Issues in the Code:**  
-        - **Inefficient Loop:** Uses \`range(len(data))\` instead of direct iteration.  
-        - **Unnecessary List Initialization:** \`result = []\` can be avoided.  
-        - **Poor Readability:** The logic can be simplified.  
+1️⃣ Issues
 
-        🔧 **Solution:**  
-        - Use **list comprehension** to make it more efficient.  
+1️⃣ Issue 1: <Short problem title>
+Why it matters: <1–2 line explanation>
 
-        ✅ **Corrected Code:**  
-        \`\`\`python
-        def process(data):
-            return [item * 2 for item in data]  # Using list comprehension
-        \`\`\`  
+2️⃣ Issue 2: <Short problem title>
+Why it matters: <1–2 line explanation>
 
-        🚀 **Final Optimized Code:**  
-        \`\`\`python
-        def process(data: list[int]) -> list[int]:
-            return [x << 1 for x in data]  # Using bitwise shift for faster multiplication
-        \`\`\`  
+3️⃣ Issue 3: <Short problem title>
+Why it matters: <1–2 line explanation>
 
-        💡 **Final Instruction:**  
-        - Always explain **what is wrong** and **how to fix it**.  
-        - Keep feedback **structured, clear, and actionable**.  
-        - Provide solutions in **Bad Code → Issues → Solution → Correct Code → Optimized Code** format.  
-        - Ensure responses are **concise, professional, and helpful**.
+2️⃣ Corrected Code
 
-        Now, review this code:
+\`\`\`javascript
+// Clean, readable, best-practice code
+\`\`\`
 
-        \`\`\`
-        ${code}
-        \`\`\``;
+-----------------------------------
+
+REVIEW THIS CODE:
+\`\`\`
+${code}
+\`\`\`
+`;
+
+
 
     const responseText = await aiService(prompt);
     let response;
